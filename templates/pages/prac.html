@@ -1,0 +1,142 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<!--Javascript-->
+<script type="text/javascript">
+    var tabBody, row, cell,button, cName;
+    function updateTable(){
+        tabBody=document.getElementById("editable");
+        row=document.createElement("tr");
+        row.setAttribute("class", "tr-body");
+        cell=document.createElement("td");
+        cell2=document.createElement("td");
+        cell3=document.createElement("td");
+        cell4=document.createElement("td");
+        cell5=document.createElement("td");
+        cell6=document.createElement("button");
+        cell6.innerHTML= "delete" ;
+        
+                  
+        div=document.createElement("div");
+        div.setAttribute("class", "square");
+        div.setAttribute("draggable", true);
+        cName=document.getElementById("1").value;
+        div1=document.createElement("div");
+        div1.setAttribute("class", "content");
+        div1.innerHTML=cName;
+        div.appendChild(div1);
+        cell.appendChild(div);
+        row.appendChild(cell);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+        row.appendChild(cell4);
+        row.appendChild(cell5);
+        row.appendChild(cell6);
+        tabBody.prepend(row);
+        cell6.addEventListener("click",function(){ deleteClient();}) ; 
+     function deleteClient (){
+        document.getElementById("editable").deleteRow(self);
+        
+    }
+    }
+</script>
+<body>
+    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Client</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form name="leds" action="" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Client Name</label>
+                            <input type="text" id="1" class="form-control" placeholder="John Doe Inc."/>                         
+                        </div>       
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Contact Name</label>
+                            <input type="text" id="2" class="form-control" placeholder="John Doe"/>                         
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Phone Number</label>
+                            <input id="name" id="3" type="text" class="form-control" placeholder="xxx-xxx-xxxx"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email address</label>
+                            <input type="text" id="4" class="form-control" placeholder="name@example.com"/>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="updateTable();return false;" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Add Client Button-->
+    <div style="position:relative;left:200px;top:10px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="padding: 5px 10px;">
+            Add Client
+        </button>
+   
+    </div>
+    <br>
+    <!--Dropdown-->
+    <div class="form-row">
+        <div class="col-md-1.5 mb-0.75", style="position:relative;left:300px;top:-42px;">
+          <label class="sr-only">Pipeline Settings</label>
+          <select name="Setting" class="form-control">
+            <option selected="true" disabled="disabled">Pipeline Settings (All)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        </div>
+    <!--Table-->
+    <div class="container">
+        <div class="table-responsive">
+            <table id="tablePreview" class="table">
+                <!--Table head-->
+                <thead>
+                    <tr class="tr-head">
+                        <th>Lead In</th>
+                        <th>Contact Made</th>
+                        <th>Needs Defined</th>
+                        <th>Proposal Made</th>
+                        <th>Negotiations Started</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="editable"> 
+                    
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript 
+    <script src="static/jquery/jquery.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    -->
+</body>
+{% endblock %}

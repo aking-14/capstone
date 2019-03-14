@@ -1,0 +1,149 @@
+{% extends 'base.html'%}
+{% block content%}
+<body>
+    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" left='0%'>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form name="leds" action="" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Client Name</label>
+                        <input type="text" id="1" class="form-control" placeholder="John Doe Inc."/>                         
+                    </div>       
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Contact Name</label>
+                        <input type="text" id="2" class="form-control" placeholder="John Doe"/>                         
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Phone Number</label>
+                        <input id="name" id="3" type="text" class="form-control" placeholder="xxx-xxx-xxxx"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="text" id="4" class="form-control" placeholder="name@example.com"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="updateTable();return false;" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--Add Client Button-->
+    <div style="position:relative;left:200px;top:10px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="padding: 5px 10px;">
+        Add Client
+        </button>
+    </div>
+    <br>
+    <!--Table-->
+    <div class="container">
+        <div class="table-responsive">
+            <table id="tablePreview" class="table">
+                <!--Table head-->
+                <thead>
+                    <tr class="tr-head">
+                        <th>Lead In</th>
+                        <th>Contact Made</th>
+                        <th>Needs Defined</th>
+                        <th>Proposal Made</th>
+                        <th>Negotiations Started</th>
+                    </tr>
+                </thead>
+                <tbody id="editable"> 
+                </tbody>
+                <tbody>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tr-body">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var tabBody, row, cell, cName;
+    function updateTable(){
+        tabBody=document.getElementById("editable");
+        row=document.createElement("tr");
+        row.setAttribute("class", "tr-body");
+        cell=document.createElement("td");
+        cell2=document.createElement("td");
+        cell3=document.createElement("td");
+        cell4=document.createElement("td");
+        cell5=document.createElement("td");
+        div=document.createElement("div");
+        div.setAttribute("class", "square");
+        div.setAttribute("draggable", true);
+        cName=document.getElementById("1").value;
+        div1=document.createElement("div");
+        div1.setAttribute("class", "content");
+        a=document.createElement("a");
+        a.setAttribute("href", "/");
+        div1.innerHTML=cName;
+        div.appendChild(div1);
+        a.appendChild(div);
+        cell.appendChild(a);
+        row.appendChild(cell);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+        row.appendChild(cell4);
+        row.appendChild(cell5);
+        tabBody.prepend(row);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,2 @@
+# Squeeze Sales CRM
+
